@@ -1,0 +1,81 @@
+<!--
+  Generated template for the Leave page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+    <ion-toolbar color="secondary">
+        <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
+    </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>Request Leave</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="leave-content" padding>
+    <ion-fab right bottom>
+        <button ion-fab color="danger" (click)="closeModal()"><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+    <ion-list>
+
+        <ion-item>
+            <ion-label>Leave Type</ion-label>
+            <ion-select [(ngModel)]="leave.type" #lType (ngModelChange)="onChange($event)">
+                <ion-option *ngFor="let item of leaveTypes" [value]="item.id">{{item.type}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Start Date</ion-label>
+            <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="leave.sDate" (ngModelChange)="onChange2($event)"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>End Date</ion-label>
+            <ion-datetime disabled={{disabled}} displayFormat="DD/MMM/YYYY" [(ngModel)]="leave.eDate" (ngModelChange)="onChange1(leave)"></ion-datetime>
+        </ion-item>
+        <div *ngIf="singleDay">
+            <ion-item>
+                <ion-label>Full/Half Day</ion-label>
+                <ion-select [(ngModel)]="leave.fhd" (ngModelChange)="onChange3($event)">
+                    <ion-option value="1">Full Day</ion-option>
+                    <ion-option value="2">Half Day AM</ion-option>
+                    <ion-option value="3">Half Day PM</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Start Time</ion-label>
+                <ion-input type="text" [(ngModel)]="leave.sTime" value="{{sTime}}" ng-readonly="true"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>End Time</ion-label>
+                <ion-input type="text" ng-readonly="true" value="{{eTime}}" [(ngModel)]="leave.eTime"></ion-input>
+            </ion-item>
+        </div>
+        <ion-item *ngIf="sickLeave">
+            <ion-label>Medical Cert</ion-label>
+            <ion-select [(ngModel)]="leave.mc">
+                <ion-option value="Yes">Yes</ion-option>
+                <ion-option value="No">No</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Reason</ion-label>
+            <ion-textarea [(ngModel)]="leave.reason">
+
+            </ion-textarea>
+        </ion-item>
+
+    </ion-list>
+    <div padding>
+        <button ion-button disabled={{buttonDisabled}} class="submit-btn" block round (click)="requestLeave(leave)">Submit</button>
+    </div>
+
+</ion-content>

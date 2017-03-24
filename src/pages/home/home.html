@@ -1,0 +1,37 @@
+<ion-header no-border>
+    <ion-navbar color="secondary">
+        <button class="menu-btn" ion-button menuToggle color="primary" style="margin: 0 -50px 0 8px" start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <ion-title>Leave Balance</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-content" padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-fab right bottom>
+        <button ion-fab (click)="openModal()" color="energized"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
+    <ion-item-group *ngFor="let item of summary">
+        <ion-item-divider color="light">{{item.type}}</ion-item-divider>
+        <ion-item>
+            <button ion-button icon-left clear small>
+                <ion-icon name="calendar"></ion-icon>
+                <div>Used: {{item.usedDays}}</div>
+            </button>
+        </ion-item>
+        <ion-item>
+            <button ion-button icon-left clear small>
+                <ion-icon name="calendar"></ion-icon>
+                <div>Left: {{item.remainingDays}}</div>
+            </button>
+        </ion-item>
+    </ion-item-group>
+
+</ion-content>

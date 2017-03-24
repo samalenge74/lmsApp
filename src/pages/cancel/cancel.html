@@ -1,0 +1,52 @@
+<!--
+  Generated template for the Cancel page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+    <ion-toolbar color="secondary">
+        <button class="menu-btn" ion-button menuToggle color="primary" style="margin: 0 -50px 0 8px" start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only item-rigth color="primary" style="margin: 0 8px 0 -50px" icon-left end (click)="reloading()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>Cancel Leave</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="cancel-content" padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <p *ngIf="noReport">
+        You do not have any Leave to cancel...
+    </p>
+    <ion-list *ngIf="lCancel">
+
+        <ion-item-sliding *ngFor="let item of cancel">
+
+            <ion-item>
+                <h2>{{item.type}}</h2>
+                <p>Days: {{item.numDays}}</p>
+                <p>
+                    <ion-icon name="calendar"></ion-icon> {{item.startDate}} -
+                    <ion-icon name="calendar"></ion-icon> {{item.endDate}}</p>
+                <ion-note item-right>{{item.status}}</ion-note>
+            </ion-item>
+
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="removeItem(item.id)"><ion-icon name="trash" item-left></ion-icon>Delete</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

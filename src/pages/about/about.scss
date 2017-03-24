@@ -1,0 +1,32 @@
+page-about {
+    .about-content {
+        background: #32DB64;
+        vertical-align: middle;
+        text-align: center;
+        height: 100% !important;
+        margin-top: 35%;
+        p {
+            font-family: fantasy;
+        }
+        p.appName {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 0;
+        }
+        p.appVersion {
+            font-size: 1.2em;
+            color: gray;
+            margin-top: 0;
+        }
+        p.appCopy {
+            font-size: 1.2em;
+            color: gray;
+            margin-bottom: 0;
+        }
+        p.appRights {
+            font-size: 1.2em;
+            color: gray;
+            margin-top: 0;
+        }
+    }
+}
