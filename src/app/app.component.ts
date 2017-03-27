@@ -1,7 +1,8 @@
+import { disconnect } from 'cluster';
 import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Platform, Nav, App} from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { Platform, Nav, App, ToastController} from 'ionic-angular';
+import { StatusBar, Splashscreen, Network } from 'ionic-native';
 import { AuthService } from '../providers/auth-service';
 import { GlobalVariables } from '../providers/global-variables';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -21,7 +22,7 @@ export class MyApp {
   rootPage;
   pages: Array<{title: string, icon: any, component: any}>;
 
-  constructor(platform: Platform, public storage: Storage, public app: App, private globalVar: GlobalVariables) {
+  constructor(public platform: Platform, public storage: Storage, public app: App, private globalVar: GlobalVariables, public toastCtrl: ToastController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -29,15 +30,32 @@ export class MyApp {
       this.hideSplashScreen();
 
       this.storage.ready().then(() =>{
-      this.storage.get('logged-in').then((val) => {
-        console.log(val);
-        if(val == false || this.globalVar.getMyGlobalVar() == ""){
-          this.rootPage = LoginPage;
+        var networkState = navigator.onLine;
+        console.log(networkState);
+        if(networkState == true){
+           this.storage.get('logged-in').then((val) => {
+            console.log(val);
+            if(val == false || this.globalVar.getMyGlobalVar() == ""){
+              this.rootPage = LoginPage;
+            }else{
+              this.rootPage = TabsPage;
+            }
+          });
         }else{
-          this.rootPage = TabsPage;
+          var x = 'You are offline!!!';
+          this.presentToast(x);
         }
-      })
-    });
+        let disconnect = Network.onDisconnect().subscribe(()=>{
+          var x = 'You are now offline!!!';
+          this.presentToast(x);
+        });
+
+        let connect = Network.onConnect().subscribe(()=>{
+          var x = 'You are back online!!!';
+          this.presentToast(x);
+        });
+       
+      });
       
     });
 
@@ -62,6 +80,15 @@ export class MyApp {
       this.globalVar.setMyGlobalVar("");
       this.storage.set("logged-in", false);
       this.app.getRootNav().setRoot(LoginPage);
+    }
+
+    presentToast(x){
+      let toast = this.toastCtrl.create({
+        message: x,
+        duration: 3000,
+        position: 'bottom'
+      });
+      toast.present();
     }
 
   hideSplashScreen(){
