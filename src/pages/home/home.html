@@ -29,7 +29,7 @@
         <ion-item>
             <button ion-button icon-left clear small>
                 <ion-icon name="calendar"></ion-icon>
-                <div>Left: {{item.remainingDays}}</div>
+                <div>Left: {{item.available - item.usedDays}}</div>
             </button>
         </ion-item>
     </ion-item-group>

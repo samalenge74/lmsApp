@@ -26,6 +26,7 @@ import { InfoPage } from '../pages/info/info';
 import { AboutPage } from '../pages/about/about';
 import { PasswordPage } from '../pages/password/password';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import  { ConnectionPage } from '../pages/connection/connection';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
     AboutPage,
     PasswordPage,
     ResetPasswordPage,
+    ConnectionPage,
     TabsPage
   ],
   imports: [
@@ -64,6 +66,7 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
     AboutPage,
     PasswordPage,
     ResetPasswordPage,
+    ConnectionPage,
     TabsPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage, DatePipe]

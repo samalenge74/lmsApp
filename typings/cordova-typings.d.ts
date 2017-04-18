@@ -4,3 +4,5 @@
 /// <reference path="../.vscode/typings/jquery/jquery.d.ts"/>
 /// <reference path="../typings/pluginshackyhacky.d.ts"/>
 /// <reference path="../typings/phonegap.d.ts"/>
+/// <reference path="../.vscode/typings/ionic/ionic.d.ts"/>
+/// <reference path="../.vscode/typings/angularjs/angular.d.ts"/>

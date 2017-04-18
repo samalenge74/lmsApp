@@ -10,12 +10,12 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class GlobalVariables {
-  
+
   myGlobalVar: any;
   myGlobalLink: any;
   constructor(public http: Http) {
     this.myGlobalVar = "";
-    this.myGlobalLink = "http://matityah.co.za/lmsApp/";
+    this.myGlobalLink = "http://lms.wecaretrading.co.za/lmsApp/";
 
     //console.log('Hello GlobalVariables Provider');
   }

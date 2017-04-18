@@ -2,7 +2,7 @@ import { disconnect } from 'cluster';
 import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Platform, Nav, App, ToastController} from 'ionic-angular';
-import { StatusBar, Splashscreen, Network } from 'ionic-native';
+import { StatusBar, Splashscreen, Network, Keyboard } from 'ionic-native';
 import { AuthService } from '../providers/auth-service';
 import { GlobalVariables } from '../providers/global-variables';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -12,6 +12,7 @@ import { InfoPage } from '../pages/info/info';
 import { IntroPage } from '../pages/intro/intro';
 import { AboutPage } from '../pages/about/about';
 import { PasswordPage } from '../pages/password/password';
+import  { ConnectionPage } from '../pages/connection/connection';
 
 
 @Component({
@@ -29,6 +30,8 @@ export class MyApp {
       StatusBar.styleDefault();
       this.hideSplashScreen();
 
+      Keyboard.disableScroll(false);
+
       this.storage.ready().then(() =>{
         var networkState = navigator.onLine;
         console.log(networkState);
@@ -42,9 +45,9 @@ export class MyApp {
             }
           });
         }else{
-          var x = 'You are offline!!!';
-          this.presentToast(x);
+          this.rootPage = ConnectionPage;
         }
+
         let disconnect = Network.onDisconnect().subscribe(()=>{
           var x = 'You are now offline!!!';
           this.presentToast(x);
@@ -54,9 +57,9 @@ export class MyApp {
           var x = 'You are back online!!!';
           this.presentToast(x);
         });
-       
+
       });
-      
+
     });
 
     // used for an example of ngFor and navigation
