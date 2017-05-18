@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content class="has-header has-subheader login-content no-scroll" padding>
+<ion-content class="has-header has-subheader login-content" scroll="false" padding>
     <ion-row class="logo-row">
         <ion-col></ion-col>
         <ion-col width-25>
@@ -22,23 +22,22 @@
         <ion-col></ion-col>
     </ion-row>
     <div class="login-box">
-
         <ion-row>
             <ion-col>
                 <ion-list inset>
 
                     <ion-item>
-                        <ion-input type="text" placeholder="Username" [(ngModel)]="usercreds.username" required></ion-input>
+                        <input type="text" placeholder="Username" [(ngModel)]="usercreds.username" required/>
                     </ion-item>
 
                     <ion-item>
-                        <ion-input type="password" placeholder="Password" [(ngModel)]="usercreds.password" required></ion-input>
-                    </ion-item>
+                        <input #input type="password" placeholder="Password" [(ngModel)]="usercreds.password" required autofocus/>
 
+                        <button ion-button clear color="dark" type="button" item-right (click)="showPassword(input)"> <ion-icon [name]="iconname"> </ion-icon> </button>
+                    </ion-item>
                 </ion-list>
             </ion-col>
         </ion-row>
-
         <ion-row>
             <ion-col class="signup-col">
                 <button ion-button class="submit-btn" full (click)="login(usercreds)">Login</button>

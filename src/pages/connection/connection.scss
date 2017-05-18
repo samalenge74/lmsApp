@@ -1,15 +1,12 @@
 page-connection {
-  .connection-content {
-      background: #32DB64;
-      .logo-row {
-          padding-top: 40%;
-      }
-
-      ion-row {
-          align-items: center;
-          text-align: center;
-      }
-
-
-  }
+    .connection-content {
+        background: #32DB64;
+        .logo-row {
+            padding-top: 20%;
+        }
+        ion-row {
+            align-items: center;
+            text-align: center;
+        }
+    }
 }

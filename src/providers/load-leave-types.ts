@@ -16,7 +16,6 @@ export class LoadLeaveTypes {
    emplNum: any;
    link: any;
   constructor(public http: Http, public globalVar: GlobalVariables) {
-    console.log('Hello LoadLeaveTypes Provider');
     this.link = this.globalVar.getMyGlobalLink();
   }
 

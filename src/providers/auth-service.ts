@@ -16,6 +16,7 @@ export class AuthService {
   http: any;
   data: any;
   AuthToken: any;
+  link: any;
   static get parameters(){
     return [Http];
   }
@@ -57,7 +58,7 @@ export class AuthService {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get('http://matityah.co.za/lmsApp/login?id='+username+'&pw='+password)
+      this.http.get('http://lms.wecaretrading.co.za/lmsApp/login?id='+username+'&pw='+password)
       .map(res => res.json())
       .subscribe(data => {
        
@@ -65,6 +66,7 @@ export class AuthService {
         // and save the data for later reference
         
         this.data = data;
+        
         resolve(this.data);
       });
     })

@@ -9,8 +9,8 @@
     <ion-toolbar color="secondary">
         <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
         <ion-buttons end>
-            <button ion-button icon-only item-rigth icon-left end (click)="presentPopover($event)">
-                <ion-icon name="flash"></ion-icon>filter
+            <button ion-button icon-only item-rigth icon-left style="margin: 0 8px 0 -50px" end (click)="presentPopover($event)">
+                <ion-icon name="flash" color="primary"></ion-icon>
             </button>
         </ion-buttons>
 
@@ -33,32 +33,35 @@
     </p>
 
     <ion-list *ngIf="fullReport">
-        <ion-item *ngFor="let item of history">
-            <ion-card>
-                <ion-card-content>
-                    <ion-card-title>
-                        {{item.type}}
-                    </ion-card-title>
-                    <p>Days: {{item.usedDays}}</p>
-                    <p>Hours: {{item.hours}}</p>
-                    <p>AM/PM: {{item.tod}}</p>
-                </ion-card-content>
-                <ion-row>
-                    <ion-col>
+        <ion-card *ngFor="let item of history" (click)="toggleDetails(item)">
+            <ion-card-header>
+                <ion-icon color="primary" item-right [name]="item.icon"></ion-icon>
+                {{item.type}} - Days: {{item.usedDays}}
+            </ion-card-header>
+            <ion-card-content>
+                <div *ngIf="!item.showDetails">
+                    <p>
+                        <button ion-button icon-left clear small>
+                      <ion-icon name="clock"></ion-icon>
+                      <div>Hours: {{item.hours}}</div>
+                    </button>
+                        <button ion-button icon-left clear small>
+                      <ion-icon name="contrast"></ion-icon>
+                      <div>AM/PM: {{item.tod}}</div>
+                    </button></p>
+                    <p>
                         <button ion-button icon-left clear small>
                       <ion-icon name="calendar"></ion-icon>
-                      <div>{{item.startDate}}</div>
+                      <div>From: {{item.startDate}}</div>
                     </button>
-                    </ion-col>
-                    <ion-col>
                         <button ion-button icon-left clear small>
                       <ion-icon name="calendar"></ion-icon>
-                      <div>{{item.endDate}}</div>
+                      <div>To: {{item.endDate}}</div>
                     </button>
-                    </ion-col>
-                </ion-row>
-            </ion-card>
-        </ion-item>
+                    </p>
+                </div>
+            </ion-card-content>
+        </ion-card>
     </ion-list>
 
 </ion-content>

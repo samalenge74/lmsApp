@@ -1,8 +1,11 @@
-import { DatePipe } from '@angular/common/src/pipes/date_pipe';
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { StatusBar } from "@ionic-native/status-bar";
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-
+import { CalendarModule } from 'angular-calendar';
 import { MyApp } from './app.component';
 import { ReportPage } from '../pages/report/report';
 import { CancelPage } from '../pages/cancel/cancel';
@@ -27,6 +30,11 @@ import { AboutPage } from '../pages/about/about';
 import { PasswordPage } from '../pages/password/password';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import  { ConnectionPage } from '../pages/connection/connection';
+import { NgCalendarModule } from 'ionic2-calendar';
+import { CalendarPage } from '../pages/calendar/calendar';
+import { AppVersion } from '@ionic-native/app-version';
+
+
 
 @NgModule({
   declarations: [
@@ -45,10 +53,15 @@ import  { ConnectionPage } from '../pages/connection/connection';
     PasswordPage,
     ResetPasswordPage,
     ConnectionPage,
+    CalendarPage,
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    NgCalendarModule,
+    BrowserModule,
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,8 +80,9 @@ import  { ConnectionPage } from '../pages/connection/connection';
     PasswordPage,
     ResetPasswordPage,
     ConnectionPage,
+    CalendarPage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage, DatePipe]
+  providers: [ StatusBar, SplashScreen, AppVersion, {provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage]
 })
 export class AppModule {}

@@ -87,7 +87,7 @@ export class ReportPage {
       }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReportPage');
+    // no reference yet...
   }
 
 }

@@ -14,6 +14,11 @@ page-history {
             border-bottom: 0px !important;
             box-shadow: none !important;
         }
+        ion-card-header {
+            ion-icon {
+                float: right;
+            }
+        }
         ion-label {
             font-size: 0.5em;
         }

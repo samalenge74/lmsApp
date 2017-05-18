@@ -43,7 +43,7 @@ export class ProfilePage {
     this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
         let alert = this.alertCtrl.create({
-            title: 'Exit LMS!!!',
+            title: '',
             message: 'Do you want to exit App?',
             buttons: [
               {

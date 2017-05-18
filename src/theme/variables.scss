@@ -26,8 +26,16 @@ $toast-md-title-color: #FFD700;
 $toast-ios-title-color: #FFD700;
 $alert-md-title-font-size: 18px;
 $alert-ios-title-font-size: 18px;
-$alert-ios-background:#387ef5;
-$alert-md-background:#387ef5;
+$alert-ios-background-color:#F9E79F;
+$alert-md-background-color:#F9E79F;
+$card-ios-background-color: #F9E79F;
+$card-md-background-color: #F9E79F;
+$loading-md-background:#F9E79F;
+$loading-ios-background:#F9E79F;
+$loading-md-spinner-dots:#387ef5;
+$loading-ios-spinner-dots:#387ef5;
+$loading-md-text-color:#387ef5;
+$loading-ios-text-color:#387ef5;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here

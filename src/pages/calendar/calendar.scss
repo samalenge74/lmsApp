@@ -1,0 +1,25 @@
+page-calendar {
+    .calendar-content {
+        background: #32DB64;
+        .toolbar-md {
+            min-height: 40px
+        }
+        button {
+            font-size: 12px;
+        }
+        ion-title {
+            float: left;
+            font-size: 0.9em;
+        }
+        .toolbar-title {
+            float: left;
+        }
+        div {
+            font-size: 0.8em;
+        }
+        .subheader {
+            font-family: sans-serif;
+            font-size: 10px;
+        }
+    }
+}

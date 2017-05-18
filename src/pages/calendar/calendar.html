@@ -1,0 +1,39 @@
+<!--
+  Generated template for the Calendar page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+    <ion-navbar color="secondary">
+        <button class="menu-btn" ion-button menuToggle color="primary" style="margin: 0 -50px 0 8px" start>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <ion-title>{{viewTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding class="calendar-content">
+    <ion-header no-border padding>
+
+        <ion-navbar>
+            <ion-title></ion-title>
+            <ion-buttons end>
+                <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+                <button ion-button (click)="changeMode('month')">M</button>
+                <button ion-button (click)="changeMode('week')">W</button>
+                <button ion-button (click)="changeMode('day')">D</button>
+                <button ion-button (click)="loadEvents()">Load Events</button>
+            </ion-buttons>
+        </ion-navbar>
+
+    </ion-header>
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)"
+        step="30">
+    </calendar>
+</ion-content>

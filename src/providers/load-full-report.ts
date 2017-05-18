@@ -24,10 +24,10 @@ export class LoadFullReport {
 
 
   fullReport(emplNum, type, from, to){
-    if(this.data){
+    /*if(this.data){
       //already loaded data
       return Promise.resolve(this.data);
-    }
+    }*/
 
     return new Promise(resolve => {
       // We're using Angular HTTP provider to request the data,

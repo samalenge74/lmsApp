@@ -5,7 +5,6 @@ import { NavController, NavParams, ViewController, AlertController, ToastControl
 
 import { GlobalVariables } from '../../providers/global-variables';
 import { LoadLeaveTypes } from '../../providers/load-leave-types';
-import { DatePipe } from '@angular/common/src/pipes/date_pipe';
 import { SendData } from '../../providers/send-data';
 
 /*
@@ -42,7 +41,7 @@ export class LeavePage {
   loading: Loading;
   response: any;
 
-  constructor(public navCtrl: NavController, public storage: Storage, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, public viewCtrl: ViewController, private globalVar: GlobalVariables,public loadingCtrl: LoadingController, public alert: AlertController, public loadData: LoadLeaveTypes,public sendData: SendData, public toastCtrl: ToastController, public datepipe: DatePipe) {
+  constructor(public navCtrl: NavController, public storage: Storage, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, public viewCtrl: ViewController, private globalVar: GlobalVariables,public loadingCtrl: LoadingController, public alert: AlertController, public loadData: LoadLeaveTypes,public sendData: SendData, public toastCtrl: ToastController) {
    this.emplNum = globalVar.getMyGlobalVar();
    this.leave = {
      type: '',
@@ -61,7 +60,7 @@ export class LeavePage {
     this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
         let alert = this.alertCtrl.create({
-            title: 'Exit LMS!!!',
+            title: 'Exit LMS',
             message: 'Do you want to exit App?',
             buttons: [
               {
@@ -103,10 +102,7 @@ export class LeavePage {
       this.buttonDisabled = true;
     }else{
       this.buttonDisabled = null;
-      /*let sD = this.datepipe.transform(this.sDate, 'yyyy/MM/dd');
-      let eD = this.datepipe.transform(this.eDate, 'yyyy/MM/dd');
-      this.sDate = new Date(sD);
-      this.eDate = new Date(eD);*/
+      
       this.diff = this.differenceInDays(this.sDate, this.eDate);
       console.log(this.eDate);
       console.log(this.diff);
@@ -117,8 +113,7 @@ export class LeavePage {
       }
       
     }
-    //this.dateDiff = this.differenceInDays(this.sDate, this.eDate)
-    //console.log(this.dateDiff);
+    
   }
 
   requestLeave(leave){
@@ -145,8 +140,14 @@ export class LeavePage {
           this.loading.dismiss();
           this.presentNotEnoughDaysToast(this.response.days);
         }else{
-          this.loading.dismiss();
-          this.presentNotDoneToast();
+          if(this.response.response == "holiday"){
+            this.loading.dismiss();
+            this.presentHolidayToast();
+          }else{
+            this.loading.dismiss();
+            this.presentNotDoneToast();
+          }
+          
         }
       }
     });
@@ -234,6 +235,16 @@ export class LeavePage {
     toast.present();
   }
 
+  presentHolidayToast(){
+    let toast = this.toastCtrl.create({
+      message: 'The selected date/s fall either over weekend or public holiday',
+      showCloseButton: true,
+      closeButtonText: 'Ok',
+      position: 'bottom'
+    });
+    toast.present();
+  }
+
   presentSuccessToast(text){
     let toast = this.toastCtrl.create({
       message: 'Your '+text+' days leave request was successfully submitted.',
@@ -255,7 +266,7 @@ export class LeavePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LeavePage');
+    // no reference yet
   }
 
 }

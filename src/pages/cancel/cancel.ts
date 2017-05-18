@@ -1,7 +1,6 @@
 import { platform } from 'os';
 import { Component } from '@angular/core';
 import {App, NavController, NavParams, LoadingController, Loading, ToastController, AlertController, Platform } from 'ionic-angular';
-
 import { GlobalVariables } from '../../providers/global-variables';
 import { LoadLeaveCancel } from '../../providers/load-leave-cancel';
 import { SendData } from '../../providers/send-data';
@@ -75,8 +74,6 @@ export class CancelPage {
         this.noReport = true;
       }
     });
-    
-    console.log('ionViewDidLoad CancelPage');
   }
 
   doRefresh(refresher) {
@@ -107,31 +104,40 @@ reloading() {
 
 removeItem(x){
   let alert = this.alertCtrl.create({
-    title: 'Confirm Deletion',
-    message: 'Do you want to delete this leave record?',
+    title: 'Provide a Reason',
+    inputs: [
+      {
+        name: 'reason',
+        placeholder: 'Reason'
+      }
+    ],
     buttons: [
       {
         text: 'Cancel',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
+          // when cancel is clicked....
         }
       },
       {
         text: 'Delete',
-        handler: () => {
-          this.showWaiting();
-          this.sendData.cancelLeave(this.emplNum, x).then(data => {
-            this.response = data;
-            if(this.response.response == "done"){
-                this.loading.dismiss();
-                this.reloading();
-                this.presentSuccessToast();
-              }else{
-                this.loading.dismiss();
-                this.presentNotDoneToast();
-              }
-          });
+        handler: data => {
+          if(data.reason != ""){
+              this.showWaiting();
+              this.sendData.cancelLeave(this.emplNum, x, data.reason).then(data => {
+                this.response = data;
+                if(this.response.response == "done"){
+                    this.loading.dismiss();
+                    this.reloading();
+                    this.presentSuccessToast();
+                  }else{
+                    this.loading.dismiss();
+                    this.presentNotDoneToast();
+                  }
+              });
+          }else{
+            return false;
+          }
         }
       }
     ]

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { GlobalVariables } from '../../providers/global-variables';
-import { AppVersion } from 'ionic-native';
+import { AppVersion } from '@ionic-native/app-version';
 import { Storage } from '@ionic/storage';
 
 /*
@@ -17,10 +17,10 @@ import { Storage } from '@ionic/storage';
 export class AboutPage {
   appVersion: any;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, private globalVar: GlobalVariables, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, private globalVar: GlobalVariables, public storage: Storage, appVersion: AppVersion) {
     this.platform.ready().then(()=>{
       if(this.platform.is('cordova')){
-        AppVersion.getVersionNumber().then((v)=>{
+        appVersion.getVersionNumber().then((v)=>{
           this.appVersion = v;
         });
       }
@@ -29,7 +29,7 @@ export class AboutPage {
     this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
         let alert = this.alertCtrl.create({
-            title: 'Exit',
+            title: 'Exit LMS',
             message: 'Do you want to exit App?',
             buttons: [
               {

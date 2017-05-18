@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/jimmy/Documents/HybridApps/lmsApp/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="afe8eb4906b94df000e2b3714c864ec42d4e4ea6">
+        <dex dex="/Users/jimmy/Documents/HybridApps/lmsApp/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_597a0bc6216defdf155a10a8db0b870922f7aaa2.jar" />
+    </item>
+
+</items>

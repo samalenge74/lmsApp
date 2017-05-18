@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { HomePage } from '../home/home';
 import { ReportPage } from '../report/report';
 import { CancelPage } from '../cancel/cancel';
-
+import { CalendarPage } from '../calendar/calendar';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -14,6 +14,7 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = ReportPage;
   tab3Root: any = CancelPage;
+  tab4Root: any = CalendarPage;
 
   constructor() {
 

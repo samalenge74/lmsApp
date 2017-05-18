@@ -1,0 +1,36 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "lmsApp"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "lmsApp"
+        }
+    },
+    "dependent_plugins": {}
+}

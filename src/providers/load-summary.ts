@@ -49,7 +49,7 @@ export class LoadSummary {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get('http://matityah.co.za/lmsApp/getReport?id='+this.emplNum)
+      this.http.get(this.link+'getReport?id='+this.emplNum)
       .map(res => res.json())
       .subscribe(data => {
        

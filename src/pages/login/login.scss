@@ -5,8 +5,8 @@ page-login {
             padding-top: 30px;
             padding-bottom: 20px;
         }
-        .no-scroll .scroll-content{
-             overflow: hidden;
+        .no-scroll .scroll-content {
+            overflow: hidden;
         }
         .input-cover {
             position: static;
@@ -16,9 +16,17 @@ page-login {
             padding: 20px 20px 0px 20px;
             margin-top: 30px;
         }
+        input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+        }
         ion-row {
             align-items: center;
             text-align: center;
+        }
+        ion-col {
+            position: initial;
         }
         ion-item {
             border-radius: 20px !important;

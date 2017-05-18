@@ -18,20 +18,28 @@
         <button ion-fab (click)="openModal()" color="energized"><ion-icon name="add"></ion-icon></button>
     </ion-fab>
 
-    <ion-item-group *ngFor="let item of summary">
-        <ion-item-divider color="light">{{item.type}}</ion-item-divider>
-        <ion-item>
-            <button ion-button icon-left clear small>
-                <ion-icon name="calendar"></ion-icon>
-                <div>Used: {{item.usedDays}}</div>
-            </button>
-        </ion-item>
-        <ion-item>
-            <button ion-button icon-left clear small>
-                <ion-icon name="calendar"></ion-icon>
-                <div>Left: {{item.available - item.usedDays}}</div>
-            </button>
-        </ion-item>
-    </ion-item-group>
+    <ion-list>
+        <ion-card *ngFor="let item of summary" (click)="toggleDetails(item)">
+
+            <ion-card-header>
+                <ion-icon color="primary" item-right [name]="item.icon"></ion-icon>
+                {{item.type}}
+            </ion-card-header>
+
+            <ion-card-content>
+                <div *ngIf="!item.showDetails">
+                    <button ion-button icon-left clear small>
+                    <ion-icon name="calendar"></ion-icon>
+                    <div>Used: {{item.usedDays}}</div>
+                </button>
+                    <button ion-button icon-left clear small>
+                    <ion-icon name="calendar"></ion-icon>
+                    <div>Left: {{item.remainingDays}}</div>
+                </button>
+                </div>
+            </ion-card-content>
+
+        </ion-card>
+    </ion-list>
 
 </ion-content>

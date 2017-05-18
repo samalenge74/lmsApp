@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, LoadingController, PopoverController, Platform } from 'ionic-angular';
-
 import { GlobalVariables } from '../../providers/global-variables';
 import { LoadFullReport } from '../../providers/load-full-report';
 import { PopoverPage } from '../../pages/popover/popover';
@@ -37,7 +36,7 @@ export class HistoryPage {
     this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
         let alert = this.alertCtrl.create({
-            title: 'Exit',
+            title: 'Exit LMS',
             message: 'Do you want to exit App?',
             buttons: [
               {
@@ -85,6 +84,7 @@ export class HistoryPage {
     loader.present().then(() => {
       this.loadData.fullReport(this.emplNum, x, this.from, this.to).then(data =>{
         this.results = data;
+        
         if(this.results.length > 0){
               this.noReport = false;
               this.fullReport = true;
@@ -137,6 +137,16 @@ export class HistoryPage {
     });
     console.log('ionViewDidLoad HistoryPage');
   }
+
+  toggleDetails(data){
+      if(data.showDetails){
+        data.showDetails = false;
+        data.icon = 'arrow-dropup-circle';
+      } else {
+        data.showDetails = true;
+        data.icon = 'arrow-dropdown-circle';
+      }
+    }
 
   presentAlert() {
   let alert = this.alertCtrl.create({

@@ -7,7 +7,6 @@ import { LeavePage } from '../../pages/leave/leave';
 import { GlobalVariables } from '../../providers/global-variables';
 import { LoadSummary } from '../../providers/load-summary';
 import { LoginPage } from '../../pages/login/login';
-import { Push } from 'ionic-native/dist/es5';
 
 
 @Component({
@@ -68,7 +67,6 @@ export class HomePage {
         this.summary = data;
       });
       
-      console.log('ionViewDidLoad ProfilePage');
     }
 
     doRefresh(refresher) {
@@ -76,6 +74,16 @@ export class HomePage {
           this.summary = data;
         refresher.complete();
       });
+    }
+
+    toggleDetails(data){
+      if(data.showDetails){
+        data.showDetails = false;
+        data.icon = 'arrow-dropup-circle';
+      } else {
+        data.showDetails = true;
+        data.icon = 'arrow-dropdown-circle';
+      }
     }
     
     showLoading(){

@@ -10,57 +10,57 @@
 </ion-header>
 
 
-<ion-content>
-    <ion-slides class="slider-content" pager="true" parallax="true" padding>
+<ion-content class="slider-content">
+    <ion-row>
+        <ion-slides pager="true" parallax="true" padding>
 
-        <ion-slide>
-            <ion-row class="logo-row">
-                <ion-col></ion-col>
-                <ion-col width-25>
-                    <img src="assets/images/lmsLogo.png" />
-                </ion-col>
-                <ion-col></ion-col>
-            </ion-row>
-            <h1>Welcome LMS App!</h1>
-        </ion-slide>
+            <ion-slide class="middle">
+                <ion-row class="logo-row">
+                    <ion-col></ion-col>
+                    <ion-col width-25>
+                        <img src="assets/images/lmsLogo.png" />
+                    </ion-col>
+                    <ion-col>
 
-        <ion-slide>
-            <ion-row class="logo-row">
+                    </ion-col>
+                </ion-row>
+                <button ion-button outline small>
+                    Welcome to LMS App
+                </button>
+            </ion-slide>
 
-                <ion-col width-80>
-                    <img class="img-slide" src="assets/images/home_page.png" />
-                </ion-col>
+            <ion-slide>
+                <img class="img-slide" src="assets/images/home_page.png" />
+            </ion-slide>
 
-            </ion-row>
-        </ion-slide>
+            <ion-slide>
+                <img class="img-slide" src="assets/images/cancel_leave.png" />
+            </ion-slide>
 
-        <ion-slide>
-            <ion-row class="logo-row">
+            <ion-slide>
+                <img class="img-slide" src="assets/images/history_page.png" />
+            </ion-slide>
 
-                <ion-col width-80>
-                    <img class="img-slide" src="assets/images/cancel_leave.png" />
-                </ion-col>
+            <ion-slide>
+                <img class="img-slide" src="assets/images/menu_page.png" />
+            </ion-slide>
 
-            </ion-row>
-        </ion-slide>
+            <ion-slide class="middle">
+                <ion-row class="logo-row">
+                    <ion-col></ion-col>
+                    <ion-col width-25>
+                        <img src="assets/images/lmsLogo.png" />
+                    </ion-col>
+                    <ion-col>
 
-        <ion-slide>
-            <ion-row class="logo-row">
+                    </ion-col>
+                </ion-row>
 
-                <ion-col width-80>
-                    <img class="img-slide" src="assets/images/profile_page.png" />
-                </ion-col>
+                <button ion-button outline small (click)="navHome()">
+                    Start using the App
+                </button>
+            </ion-slide>
 
-            </ion-row>
-        </ion-slide>
-
-        <ion-slide>
-            <img src="assets/img3.svg">
-            <h1>Get started now!</h1>
-            <button ion-button outline small (click)="navHome()">
-        Start using the app
-      </button>
-        </ion-slide>
-
-    </ion-slides>
+        </ion-slides>
+    </ion-row>
 </ion-content>

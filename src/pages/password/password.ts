@@ -78,7 +78,7 @@ export class PasswordPage {
   changePassword(p){
     if(this.p.password != "" && this.p.confPassword !=""){
       this.showWaiting();
-      this.sendData.changePassword(this.emplNum, p.password).then(data => {
+      this.sendData.changePassword(this.emplNum, p.opassword, p.password).then(data => {
         
         this.response = data;
         console.log(JSON.stringify(this.response));

@@ -1,4 +1,3 @@
-import { Push } from 'ionic-native/dist/es5';
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController, NavParams, AlertController, ToastController, LoadingController, Loading, Platform, ModalController } from 'ionic-angular';
@@ -30,12 +29,15 @@ export class LoginPage {
   results: any=[];
 
   loading: Loading;
+  iconname: any;
+  status: any;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public modelCtrl: ModalController, public alertCtrl: AlertController, public platform: Platform, public authservice: AuthService,public loadingCtrl: LoadingController, public globalVar: GlobalVariables, public storage: Storage, public toastCtrl: ToastController) {
     this.usercreds = {
       username: '',
       password: ''
     }
+    this.iconname = 'eye';
     this.service = authservice;
     this.nav = navCtrl;
     this.platform.ready().then(()=>{
@@ -75,6 +77,11 @@ export class LoginPage {
     });
   }
 
+  showPassword(input: any): any {
+   input.type = input.type === 'password' ?  'text' : 'password';
+   this.iconname = this.iconname === 'eye' ? 'eye-off' : 'eye';
+  }
+
   presentResetPassordModal(){
     let modal = this.modelCtrl.create(ResetPasswordPage);
     modal.present();
@@ -85,6 +92,7 @@ export class LoginPage {
       this.presentToast();
     }else{
       this.service.authenticate(user).then(data => {
+        this.status = data.status;
         this.results = data;
         if(this.results.length > 0){
           this.globalVar.setMyGlobalVar(data[0].emplNum);
