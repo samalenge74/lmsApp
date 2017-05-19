@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.lmsapp126529" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>lmsApp</name>
+<widget id="com.ionicframework.lmsapp126529" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>lms</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="jimmysamalenge@gmail.com" href="http://ionicframework.com/">Jimmy Samalenge</author>
     <content src="index.html" />

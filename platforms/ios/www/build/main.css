@@ -27103,8 +27103,16 @@ page-about .about-content {
   margin-top: 35%;
 }
 
+page-about .about-content ion-header {
+  background-color: green;
+}
+
 page-about .about-content p {
   font-family: fantasy;
+}
+
+page-about .about-content .title {
+  background-color: green;
 }
 
 page-about .about-content p.appName {

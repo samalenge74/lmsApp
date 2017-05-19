@@ -5,8 +5,14 @@ page-about {
         text-align: center;
         height: 100% !important;
         margin-top: 35%;
+        ion-header {
+            background-color: green;
+        }
         p {
             font-family: fantasy;
+        }
+        .title {
+            background-color: green;
         }
         p.appName {
             font-size: 1.5em;
