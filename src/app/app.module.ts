@@ -33,6 +33,7 @@ import  { ConnectionPage } from '../pages/connection/connection';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { AppVersion } from '@ionic-native/app-version';
+import { Network } from '@ionic-native/network';
 
 
 
@@ -83,6 +84,6 @@ import { AppVersion } from '@ionic-native/app-version';
     CalendarPage,
     TabsPage
   ],
-  providers: [ StatusBar, SplashScreen, AppVersion, {provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage]
+  providers: [ StatusBar, SplashScreen, AppVersion, Network, {provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage]
 })
 export class AppModule {}
