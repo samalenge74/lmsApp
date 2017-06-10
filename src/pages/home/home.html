@@ -14,8 +14,15 @@
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+    <ion-fab top right edge>
+        <button ion-fab (click)="openModal()" color="energized" mini><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
     <ion-fab right bottom>
-        <button ion-fab (click)="openModal()" color="energized"><ion-icon name="add"></ion-icon></button>
+        <button ion-fab color="light" [hidden]="hide" mini><ion-icon name="arrow-dropleft"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button ion-fab (click)="openActions()"><ion-icon name="checkbox-outline"></ion-icon></button>
+            <button ion-fab (click)="openCalendar()"><ion-icon name="calendar"></ion-icon></button>
+        </ion-fab-list>
     </ion-fab>
 
     <ion-list>

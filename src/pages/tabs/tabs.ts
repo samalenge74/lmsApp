@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { ReportPage } from '../report/report';
 import { CancelPage } from '../cancel/cancel';
 import { CalendarPage } from '../calendar/calendar';
+import { Action } from '../action/action';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -14,7 +15,6 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = ReportPage;
   tab3Root: any = CancelPage;
-  tab4Root: any = CalendarPage;
 
   constructor() {
 

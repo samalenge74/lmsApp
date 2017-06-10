@@ -1,0 +1,59 @@
+<!--
+  Generated template for the Cancel page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+    <ion-toolbar color="secondary">
+        <ion-title><img alt="logo" height="40" src="assets/images/lmsLogo.png"> </ion-title>
+
+    </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>Actions Pending</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="cancel-content" padding>
+    <ion-fab right bottom>
+        <button ion-fab color="danger" (click)="closeModal()" mini><ion-icon name="close"></ion-icon></button>
+    </ion-fab>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div padding>
+        <ion-segment [(ngModel)]="requests">
+            <ion-segment-button value="requests">
+                Leave Requests
+            </ion-segment-button>
+            <ion-segment-button value="cancels">
+                Leave Cancel
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+
+    <div [ngSwitch]="requests">
+        <ion-list *ngSwitchCase="'requests'">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="img/thumbnail-puppy-1.jpg">
+                </ion-thumbnail>
+                <h2>Ruby</h2>
+            </ion-item>
+            ...
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'cancels'">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="img/thumbnail-kitten-1.jpg">
+                </ion-thumbnail>
+                <h2>Luna</h2>
+            </ion-item>
+            ...
+        </ion-list>
+    </div>
+</ion-content>

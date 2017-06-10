@@ -35,7 +35,6 @@ export class MyApp {
 
       this.storage.ready().then(() =>{
         var networkState = navigator.onLine;
-        console.log(networkState);
         if(networkState == true){
            this.storage.get('logged-in').then((val) => {
             if(val == false || this.globalVar.getMyGlobalVar() == ""){

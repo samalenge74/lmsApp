@@ -96,6 +96,7 @@ export class LoginPage {
         this.results = data;
         if(this.results.length > 0){
           this.globalVar.setMyGlobalVar(data[0].emplNum);
+          this.globalVar.setManagerVar(data[0].is_manager);
           this.loading.dismiss();
           this.storage.ready().then(()=>{
             this.storage.set('logged-in', true);

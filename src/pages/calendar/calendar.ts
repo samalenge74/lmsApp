@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {Platform, NavController, NavParams, AlertController } from 'ionic-angular';
+import {Platform, NavController, NavParams, AlertController, ViewController, LoadingController, Loading} from 'ionic-angular';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
 import { GlobalVariables } from '../../providers/global-variables';
 import { Storage } from '@ionic/storage';
+import { LoadLeave } from '../../providers/load-leaves';
 
 /*
   Generated class for the Calendar page.
@@ -15,19 +16,21 @@ import { Storage } from '@ionic/storage';
 */
 @Component({
   selector: 'page-calendar',
-  templateUrl: 'calendar.html'
+  templateUrl: 'calendar.html',
+  providers:[LoadLeave]
 })
 export class CalendarPage {
 
   eventSource;
   viewTitle;
   isToday:boolean;
+  loading: Loading;
   calendar = {
     mode: 'month',
     currentDate: new Date()
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, private globalVar: GlobalVariables, public storage: Storage) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public viewCtrl: ViewController, public navParams: NavParams, public platform: Platform, public alertCtrl: AlertController, private globalVar: GlobalVariables, public storage: Storage, public loadData: LoadLeave) {
      this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
         let alert = this.alertCtrl.create({
@@ -58,7 +61,11 @@ export class CalendarPage {
   }
 
   loadEvents(){
-    this.eventSource = this.createRandomEvents();
+    this.showLoading();
+    this.loadData.reload().then(data => {
+        this.loading.dismiss();
+        this.eventSource = data;
+    });
   }
 
   onViewTitleChanged(title){
@@ -136,7 +143,37 @@ export class CalendarPage {
     };
 
   ionViewDidLoad() {
+    this.showLoading();
+    this.loadData.load().then(data => {
+        this.loading.dismiss();
+        this.eventSource = data;
+    });
     //console.log('ionViewDidLoad CalendarPage');
   }
+
+  closeModal(){
+    let confirm = this.alertCtrl.create({
+      title: 'Close Me?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.viewCtrl.dismiss();
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  showLoading(){
+      this.loading = this.loadingCtrl.create({
+        content: 'Loading...' 
+      });
+      this.loading.present();
+    }
 
 }

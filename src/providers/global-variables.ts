@@ -13,8 +13,11 @@ export class GlobalVariables {
 
   myGlobalVar: any;
   myGlobalLink: any;
+  myManagerVar: any;
   constructor(public http: Http) {
+    
     this.myGlobalVar = "";
+    this.myManagerVar = 0;
     this.myGlobalLink = "http://lms.wecaretrading.co.za/lmsApp/";
 
     //console.log('Hello GlobalVariables Provider');
@@ -24,6 +27,10 @@ export class GlobalVariables {
     this.myGlobalVar = value;
   }
 
+  setManagerVar(value) {
+    this.myManagerVar = value;
+  }
+
   getMyGlobalVar() {
     return this.myGlobalVar;
   }
@@ -31,5 +38,11 @@ export class GlobalVariables {
   getMyGlobalLink(){
     return this.myGlobalLink;
   }
+
+  getManagerVar() {
+    return this.myManagerVar;
+  }
+
+  
 
 }

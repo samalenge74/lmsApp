@@ -34,7 +34,8 @@ import { NgCalendarModule } from 'ionic2-calendar';
 import { CalendarPage } from '../pages/calendar/calendar';
 import { AppVersion } from '@ionic-native/app-version';
 import { Network } from '@ionic-native/network';
-
+import { Action } from '../pages/action/action';
+import { LoadLeave } from '../providers/load-leaves';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { Network } from '@ionic-native/network';
     ResetPasswordPage,
     ConnectionPage,
     CalendarPage,
+    Action,
     TabsPage
   ],
   imports: [
@@ -82,6 +84,7 @@ import { Network } from '@ionic-native/network';
     ResetPasswordPage,
     ConnectionPage,
     CalendarPage,
+    Action,
     TabsPage
   ],
   providers: [ StatusBar, SplashScreen, AppVersion, Network, {provide: ErrorHandler, useClass: IonicErrorHandler}, GlobalVariables, Storage]

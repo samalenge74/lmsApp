@@ -2,12 +2,12 @@ import * as ionic from 'Ionic';
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import {App, NavController, NavParams, ModalController, LoadingController, Loading, Platform, AlertController } from 'ionic-angular';
-
 import { LeavePage } from '../../pages/leave/leave';
 import { GlobalVariables } from '../../providers/global-variables';
 import { LoadSummary } from '../../providers/load-summary';
 import { LoginPage } from '../../pages/login/login';
-
+import { CalendarPage } from '../calendar/calendar';
+import { Action } from '../action/action';
 
 @Component({
   selector: 'page-home',
@@ -17,13 +17,21 @@ import { LoginPage } from '../../pages/login/login';
 export class HomePage {
   
   emplNum: any;
+  managerVar: any;
   summary: any;
   nav: any;
+  hide: any = false;
 
   loading: Loading;
   constructor(public app: App, public storage: Storage, public platform: Platform, public alertCtrl: AlertController, public navCtrl: NavController, private navParams: NavParams, private globalVar: GlobalVariables, private loadData: LoadSummary, public modalCtrl: ModalController, public loadingCtrl: LoadingController ) {
     
-    this.emplNum = globalVar.getMyGlobalVar(); 
+    this.emplNum = globalVar.getMyGlobalVar();
+    this.managerVar = globalVar.getManagerVar();
+    if(this.managerVar == 1){
+      this.hide = false;
+    }else{
+      this.hide = true;
+    }
     this.nav = navCtrl;
     this.platform.ready().then(()=>{
       this.platform.registerBackButtonAction(()=>{
@@ -57,6 +65,16 @@ export class HomePage {
 
   openModal(){
     let myModal = this.modalCtrl.create(LeavePage);
+    myModal.present();
+  }
+
+  openCalendar(){
+    let myModal = this.modalCtrl.create(CalendarPage);
+    myModal.present();
+  }
+
+  openActions(){
+    let myModal = this.modalCtrl.create(Action);
     myModal.present();
   }
 
