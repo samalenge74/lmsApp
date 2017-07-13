@@ -1,10 +1,8 @@
 page-login {
     .login-content {
-        background-image: url('assets/images/bg.png');
-        background-repeat: none;
-        background-size: cover;
+        background-image: url('../assets/images/bg.png');
         .logo-row {
-            padding-top: 30px;
+            padding-top: 80px;
             padding-bottom: 20px;
         }
         .no-scroll .scroll-content {
@@ -14,7 +12,7 @@ page-login {
             position: static;
         }
         .login-box {
-            background: #0063F3;
+            //background: #0063F3;
             padding: 20px 20px 0px 20px;
             margin-top: 30px;
         }
