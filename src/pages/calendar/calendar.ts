@@ -145,8 +145,10 @@ export class CalendarPage {
   ionViewDidLoad() {
     this.showLoading();
     this.loadData.load().then(data => {
+      
         this.loading.dismiss();
         this.eventSource = data;
+        
     });
     //console.log('ionViewDidLoad CalendarPage');
   }

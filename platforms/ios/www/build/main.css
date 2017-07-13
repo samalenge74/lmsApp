@@ -27384,7 +27384,9 @@ page-leave .leave-content .submit-btn {
 }
 
 page-login .login-content {
-  background: #32DB64;
+  background-image: url("assets/images/bg.png");
+  background-repeat: none;
+  background-size: cover;
 }
 
 page-login .login-content .logo-row {

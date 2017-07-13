@@ -25,35 +25,67 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <div padding>
-        <ion-segment [(ngModel)]="requests">
-            <ion-segment-button value="requests">
-                Leave Requests
+        <ion-segment [(ngModel)]="actions">
+            <ion-segment-button value="lrequests">
+                Leave Request
             </ion-segment-button>
-            <ion-segment-button value="cancels">
+            <ion-segment-button value="lcancels">
                 Leave Cancel
             </ion-segment-button>
         </ion-segment>
     </div>
 
-    <div [ngSwitch]="requests">
-        <ion-list *ngSwitchCase="'requests'">
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="img/thumbnail-puppy-1.jpg">
-                </ion-thumbnail>
-                <h2>Ruby</h2>
-            </ion-item>
-            ...
+    <div [ngSwitch]="actions">
+        <ion-list *ngSwitchCase="'lrequests'">
+            <p *ngIf="noReport2">
+                No actions needed...
+            </p>
+            <ion-list *ngIf="lRequest">
+
+                <ion-item-sliding *ngFor="let item of requests">
+
+                    <ion-item>
+                        <h2>{{item.name}}</h2>
+                        <p>{{item.type}}</p>
+                        <p>
+                            <ion-icon name="calendar"></ion-icon> {{item.startDate}} -
+                            <ion-icon name="calendar"></ion-icon> {{item.endDate}}</p>
+                        <ion-note item-right>Days: {{item.numDays}}</ion-note>
+                    </ion-item>
+
+                    <ion-item-options side="right">
+                        <!--<button ion-button color="light" (click)="view(item.id)"><ion-icon name="eye" item-left></ion-icon>View</button>-->
+                        <button ion-button color="success" (click)="lApprove(item.id, item.emplNum)"><ion-icon name="checkmark-circle" item-left></ion-icon>Approve</button>
+                        <button ion-button color="danger" (click)="lDecline(item.id, item.emplNum)"><ion-icon name="close-circle" item-left></ion-icon>Decline</button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
         </ion-list>
 
-        <ion-list *ngSwitchCase="'cancels'">
-            <ion-item>
-                <ion-thumbnail item-start>
-                    <img src="img/thumbnail-kitten-1.jpg">
-                </ion-thumbnail>
-                <h2>Luna</h2>
-            </ion-item>
-            ...
+        <ion-list *ngSwitchCase="'lcancels'">
+            <p *ngIf="noReport">
+                No actions needed...
+            </p>
+            <ion-list *ngIf="lCancel">
+
+                <ion-item-sliding *ngFor="let item of cancels">
+
+                    <ion-item>
+                        <h2>{{item.name}}</h2>
+                        <p>{{item.type}}</p>
+                        <p>
+                            <ion-icon name="calendar"></ion-icon> {{item.startDate}} -
+                            <ion-icon name="calendar"></ion-icon> {{item.endDate}}</p>
+                        <ion-note item-right>Days: {{item.numDays}}</ion-note>
+                    </ion-item>
+
+                    <ion-item-options side="right">
+                        <!--<button ion-button color="primary" (click)="view(item.id)"><ion-icon name="eye" item-left></ion-icon>View</button>-->
+                        <button ion-button color="success" (click)="cApprove(item.id, item.emplNum)"><ion-icon name="checkmark-circle" item-left></ion-icon>Approve</button>
+                        <button ion-button color="danger" (click)="cDecline(item.id, item.emplNum)"><ion-icon name="close-circle" item-left></ion-icon>Decline</button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
         </ion-list>
     </div>
 </ion-content>

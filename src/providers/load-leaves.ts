@@ -17,6 +17,7 @@ export class LoadLeave {
    link: any;
   constructor(public http: Http, public globalVar: GlobalVariables) {
     this.link = this.globalVar.getMyGlobalLink();
+    this.emplNum = this.globalVar.getMyGlobalVar();
   }
 
 
@@ -30,7 +31,7 @@ export class LoadLeave {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get(this.link+'leaves?id='+this.link+'leaves')
+      this.http.get(this.link+'leaves?id='+this.emplNum)
       .map(res => res.json())
       .subscribe(data => {
        
@@ -39,7 +40,7 @@ export class LoadLeave {
         
         this.data = data;
         resolve(this.data);
-        
+        console.log(JSON.stringify(this.data));
       });
     })
   }

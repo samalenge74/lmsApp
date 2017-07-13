@@ -77,8 +77,18 @@ export class CancelPage {
   }
 
   doRefresh(refresher) {
-  this.loadData.reload().then(res => {
-    this.cancel = res;
+  this.loadData.reload().then(data => {
+    this.loading.dismiss();
+      this.results = data;
+      
+      if(this.results.length > 0){
+          this.cancel = data;
+          this.lCancel = true;
+          this.noReport = false;
+      }else{
+        this.lCancel = false;
+        this.noReport = true;
+      }
     refresher.complete();
   });
 }
